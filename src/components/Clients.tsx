@@ -112,14 +112,17 @@ export default function Clients() {
               transition={{ duration: 0.4, delay: 0.1 * index }}
               className="group"
             >
-              <div className="card-glass flex flex-col items-center justify-center py-6 px-4 h-32 md:h-36">
-                {/* Placeholder for logo */}
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 flex items-center justify-center mb-2 group-hover:bg-white/20 transition-colors duration-300">
-                  <span className="text-2xl md:text-3xl font-bold text-primary-500/60 group-hover:text-primary-500 transition-colors">
-                    {client.name.charAt(0)}
-                  </span>
+              <div className="card-glass flex flex-col items-center justify-center py-4 px-3 h-40 md:h-44">
+                <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3 flex-shrink-0">
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    sizes="80px"
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
-                <p className="text-[10px] md:text-xs text-center text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-2">
+                <p className="text-[10px] md:text-xs text-center text-gray-400 group-hover:text-gray-300 transition-colors leading-tight">
                   {client.name}
                 </p>
               </div>
