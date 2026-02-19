@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import {
   MapPin,
   Phone,
@@ -12,6 +13,7 @@ import {
   Loader2,
   Clock,
   Globe,
+  AlertCircle,
 } from 'lucide-react'
 
 const contactInfo = [
@@ -68,6 +70,7 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -78,16 +81,25 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          phone: formState.phone,
+          company: formState.company,
+          service: formState.service,
+          message: formState.message,
+          to_email: 'juanmanuel@microingenieria.net',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-
-    // Reset form after showing success message
-    setTimeout(() => {
-      setIsSubmitted(false)
+      setIsSubmitted(true)
       setFormState({
         name: '',
         email: '',
@@ -96,7 +108,16 @@ export default function Contact() {
         service: '',
         message: '',
       })
-    }, 3000)
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 5000)
+    } catch (err) {
+      setError('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.')
+      console.error('EmailJS error:', err)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -227,6 +248,12 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {error && (
+                    <div className="flex items-center gap-3 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                      <p className="text-red-400 text-sm">{error}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label
