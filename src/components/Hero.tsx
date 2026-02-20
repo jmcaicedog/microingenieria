@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-20 pb-16 md:pb-0"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 bg-grid opacity-30" />
@@ -58,7 +58,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 md:mb-8"
           >
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-sm text-gray-300">+10 años de experiencia</span>
@@ -126,7 +126,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+            className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
           >
             {[
               { value: '+10', label: 'Años de experiencia' },

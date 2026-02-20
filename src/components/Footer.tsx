@@ -45,21 +45,16 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10">
+              <div className="relative w-56 h-16 md:w-48 md:h-14">
                 <Image
                   src="/logo.png"
                   alt="Microingeniería Logo"
                   fill
-                  sizes="40px"
-                  className="object-contain"
+                  sizes="(max-width: 768px) 224px, 192px"
+                  className="object-contain object-left"
                 />
               </div>
-              <div>
-                <span className="text-lg font-display font-bold">
-                  <span className="text-white">MICRO</span>
-                  <span className="text-primary-500">INGENIERÍA</span>
-                </span>
-              </div>
+
             </a>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               Más de 10 años diseñando soluciones tecnológicas de alto impacto.
