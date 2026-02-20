@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1] mb-6"
           >
             <span className="text-white">Pequeños sistemas,</span>
             <br />
@@ -81,7 +81,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 text-balance"
+            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 text-balance leading-[1.1]"
           >
             Somos expertos en <span className="text-primary-500 font-semibold">instrumentación electrónica</span>,{' '}
             <span className="text-primary-500 font-semibold">automatización industrial</span> y{' '}
